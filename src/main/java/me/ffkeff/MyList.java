@@ -16,7 +16,11 @@ public class MyList<T> {
         head = tail = null;
     }
 
-
+    public MyList(MyList<T> list){
+        head = list.head;
+        tail = list.tail;
+        size = list.getSize();
+    }
     public void pushFront(T data){
         var tmp = new Node<>(head, data, null);
         if(head != null)
@@ -39,9 +43,9 @@ public class MyList<T> {
 
         size++;
     }
-    public T pop(){
+    public T pop() throws MyListException{
         if(head == null)
-            System.out.println("error!");
+            throw new MyListException("head is null\n");
 
         Node<T> prev = head;
         head = head.next;
@@ -82,7 +86,7 @@ public class MyList<T> {
         size = 0;
     }
 
-    public Node<T> getNth(int index){
+    private Node<T> getNth(int index){
         Node<T> tmp;
         int i;
 

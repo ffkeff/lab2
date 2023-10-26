@@ -1,5 +1,8 @@
 package me.ffkeff;
 
-public class MyListException extends MyList{
+public class MyListException extends Exception{
 
+    public MyListException(String message){
+        super(message);
+    }
 }
